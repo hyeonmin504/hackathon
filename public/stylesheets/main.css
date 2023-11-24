@@ -1,0 +1,64 @@
+body {
+  background: rgb(98, 118, 99);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(98, 118, 99, 1) 0%,
+    rgba(98, 118, 99, 1) 60%,
+    rgba(174, 89, 89, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(98, 118, 99, 1) 0%,
+    rgba(98, 118, 99, 1) 60%,
+    rgba(174, 89, 89, 1) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(98, 118, 99, 1) 0%,
+    rgba(98, 118, 99, 1) 60%,
+    rgba(174, 89, 89, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#627663",endColorstr="#ae5959",GradientType=1);
+}
+section {
+  align-items: center;
+}
+section button {
+  border: none;
+  border-radius: 9999px;
+  width: 10rem;
+  height: 10rem;
+  font-size: 0;
+}
+
+section .button-wrap:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+section .button-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+section button.workout {
+  background-image: url(../icons/workout.png);
+}
+section button.book {
+  background-image: url(../icons/book.png);
+}
+section button.wine {
+  background-image: url(../icons/wine.png);
+}
+
+section .button-wrap p {
+  margin: 1rem;
+  font-size: 1.5rem;
+  color: white;
+}

@@ -98,6 +98,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -137,37 +138,73 @@ table {
 }
 
 /*end*/
+html {
+  height: 100%;
+  font-size: 16px;
+}
 
 body {
   font-family: Pretendard-Regular, Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #627663;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-header {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  text-align: center;
+section {
+  width: 100%;
+  max-width: 768px;
 }
 
 section {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 300px;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 section form {
-  max-width: 200px;
-  padding: 10px;
+  width: 100%;
+  padding: 2rem;
+  margin: 2.25rem 0;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 1.25rem;
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 
 section form label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+h1 {
+  color: white;
+  font-size: 2.75rem;
+  font-weight: 800;
+}
+
+section form .input-wrap:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+section form .input-wrap input {
+  border: none;
+  border-bottom: 2.5px solid black;
+  width: 100%;
+}
+
+section form button {
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem;
+  width: 100%;
+  background: #7d7373;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
 }

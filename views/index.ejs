@@ -6,22 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="stylesheets/style.css">  
+  <link rel="stylesheet" href="stylesheets/index.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>Welcome!</h1>
-  </header>
-
   <section>
+    
+    <h1>환영합니다!</h1>
     <form action="/main" method="post">
-      <label for="nickname`">nickname:</label>
-      <input type="text" id="nickname" name="nickname" required>
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <div class="input-wrap">
+        <label for="nickname`">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" required>
+      </div>
+      <div class="input-wrap">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
 
       <button type="submit">Login</button>
     </form>

@@ -6,72 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main Page</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+  
+  <link rel="stylesheet" href="stylesheets/style.css">  
+  <link rel="stylesheet" href="stylesheets/main.css">  
 
-    header {
-      background-color: #333;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-
-    section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      outline: none;
-      color: #fff;
-      background-color: #333;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 0 2px #999;
-    }
-
-    .button:hover {
-      background-color: #555;
-    }
-  </style>
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to the Main Page!</h1>
-  </header>
-
   <section>
     <!-- 버튼 추가 -->
-    <button class="button" onclick="handleButtonClick(1)">운동</button>
-    <button class="button" onclick="handleButtonClick(2)">도서</button>
-    <button class="button" onclick="handleButtonClick(3)">주류</button>
+    <div class="button-wrap ">
+      <button class="button workout" onclick="handleButtonClick(1)">운동</button>
+      <p>운동</p>
+    </div>
+    <div class="button-wrap">
+      <button class="button book" onclick="handleButtonClick(2)">도서</button>
+      <p>도서</p>
+    </div>
+    <div class="button-wrap">
+      <button class="button wine" onclick="handleButtonClick(3)">주류</button>
+      <p>주류</p>
+    </div>
   </section>
 
   <footer>
