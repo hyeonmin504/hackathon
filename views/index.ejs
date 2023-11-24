@@ -1,0 +1,90 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    section {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 300px;
+    }
+
+    section form {
+      max-width: 200px;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome!</h1>
+  </header>
+
+  <section>
+    <form action="/main" method="post">
+      <label for="nickname`">nickname:</label>
+      <input type="text" id="nickname" name="nickname" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </section>
+  <script>
+    $(document).ready(function() {
+      // 폼이 submit될 때의 이벤트 핸들러
+      $('#signupForm').submit(function(event) {
+        event.preventDefault(); // 기본 submit 동작을 막음
+
+        var nickname = $('#nickname').val();
+        var password = $('#password').val();
+
+        $.ajax({
+          url: "/main",
+          data: { username: username, password: password },
+          type: "POST",
+          success: function(response) {
+            console.log("데이터 요청 성공");
+            alert("가입이 완료되었습니다.");
+
+            // 가입이 완료되면 /main 페이지로 리다이렉트
+            window.location.href = "/main";
+          },
+          error: function(error) {
+            console.log("데이터 요청 실패");
+            alert("가입에 실패했습니다.");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
