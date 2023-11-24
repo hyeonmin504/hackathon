@@ -81,9 +81,21 @@
   <script>
     // 버튼 클릭 이벤트 핸들러 (예시)
     function handleButtonClick(buttonNumber) {
-      alert("Button " + buttonNumber + " Clicked!");
-      // 원하는 동작을 추가할 수 있습니다.
+        var sub;
+        if (buttonNumber == 1) sub = "운동"
+        else if (buttonNumber == 2) sub = "도서"
+        else if (buttonNumber == 3) sub = "주류"
+        
+        alert(sub + "을 선택하셨어요!");
+
+        // 원하는 동작을 추가할 수 있습니다.
+        try {
+            window.location.href = "/subjectList?buttonNumber=" + buttonNumber;
+        } catch (error) {
+            console.error('Error during redirection:', error);
+        }
     }
+
   </script>
 
 </body>

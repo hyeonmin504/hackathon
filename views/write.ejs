@@ -1,0 +1,100 @@
+<!-- views/write.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write a Post</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Write a Post</h1>
+  </header>
+
+  <section>
+    <!-- 닉네임과 버튼 정보 출력 -->
+    <p>Welcome, <%= nickname %>!</p>
+    <p>Button Number: <%= buttonNumber %></p>
+
+    <!-- 게시글 작성 폼 -->
+    <form id="postForm" method="post">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <br>
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" rows="4" required></textarea>
+      <br>
+      <button type="submit">Submit Post</button>
+    </form>
+  </section>
+  
+  <footer>
+    <p>&copy; 2023 Write a Post</p>
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      $("#postForm").submit(function(event) {
+        event.preventDefault();
+
+        // 게시글 정보를 서버로 전송
+        $.ajax({
+          type: "POST",
+          url: "/post",
+          data: {
+            title: $("#title").val(),
+            content: $("#content").val(),
+            nickname: "<%= nickname %>",
+            buttonNumber: "<%= buttonNumber %>",
+          },
+          success: function(response) {
+            console.log(response);
+            // 게시글 저장 후 subjectList 페이지로 이동
+            window.location.href = "/subjectList?buttonNumber=<%= buttonNumber %>";
+          },
+          error: function(error) {
+            console.error(error);
+            alert("Failed to submit the post.");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

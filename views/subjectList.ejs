@@ -1,0 +1,87 @@
+<!-- views/subjectList.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subject List</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+  <!-- 이 부분에 스크립트 추가 -->
+  <script>
+    // <%= %> 안에서 변수를 사용할 때는 스크립트로 감싸야 합니다.
+    $(document).ready(function() {
+      $("#writeButton").click(function() {
+        // 클라이언트 측에서는 서버 측에서 전달한 변수를 사용할 수 있도록 스크립트로 감싸줍니다.
+        var buttonNumber = <%= buttonNumber %>;
+        var nickname = "<%= nickname %>";
+
+        // 버튼을 클릭했을 때 write.ejs 페이지로 이동하면서 닉네임과 버튼 넘버 정보를 전달합니다.
+        window.location.href = "/write?buttonNumber=" + buttonNumber + "&nickname=" + nickname;
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>Subject List</h1>
+  </header>
+
+  <section>
+    <!-- 닉네임과 버튼 정보 출력 -->
+    <p>Welcome, <%= nickname %>!</p>
+    <p>Button Number: <%= buttonNumber %></p>
+  
+    <!-- 게시글 작성 버튼 -->
+    <button id="writeButton">게시글 작성</button>
+  </section>
+  
+  <footer>
+    <p>&copy; 2023 Subject List</p>
+  </footer>
+
+  <!-- 리스트 출력 부분 -->
+  <section>
+    <h2>게시글 리스트</h2>
+    <ul>
+      <% listInfo.forEach(function(item) { %>
+        <li>Title: <%= item.title %>, Nickname: <%= item.nickname %>, Content: <%= item.content%></li>
+      <% }); %>
+    </ul>
+  </section>
+</body>
+</html>
